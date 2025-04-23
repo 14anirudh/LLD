@@ -1,5 +1,47 @@
 package FoodDeliverySystem.Order;
+import FoodDeliverySystem.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Order {
-    
+    private final String id;
+    private final Customer customer;
+    private final Restaurant restaurant;
+    private final List<OrderItem> items;
+    private OrderStatus status;
+    private DeliveryAgent deliveryAgent;
+
+    public Order(String id, Customer customer, Restaurant restaurant, List<OrderItem> items) {
+        this.id = id;
+        this.customer = customer;
+        this.restaurant = restaurant;
+        this.items = new ArrayList<>();
+        this.status = OrderStatus.PENDING;
+    }
+
+    public void addItem(OrderItem item){
+        items.add(item);
+    }
+
+    public void removeItem(OrderItem item){
+        items.remove(item);
+    }
+
+    public void setStatus(OrderStatus status){
+        this.status = status;
+    }
+
+    public void assignDeliveryAgent(DeliveryAgent deliveryAgent){
+        this.deliveryAgent = deliveryAgent;
+    }
+
+    public String getId() {
+        return id;
+  
+    }
+
+    public OrderStatus getStatus(){
+        return status;
+    }
 }
