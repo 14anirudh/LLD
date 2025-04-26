@@ -1,4 +1,5 @@
 package FoodDeliverySystem.Order;
+
 import FoodDeliverySystem.*;
 
 import java.util.ArrayList;
@@ -20,28 +21,28 @@ public class Order {
         this.status = OrderStatus.PENDING;
     }
 
-    public void addItem(OrderItem item){
+    public void addItem(OrderItem item) {
         items.add(item);
     }
 
-    public void removeItem(OrderItem item){
+    public void removeItem(OrderItem item) {
         items.remove(item);
     }
 
-    public void setStatus(OrderStatus status){
+    public void setStatus(OrderStatus status) {
         this.status = status;
     }
 
-    public void assignDeliveryAgent(DeliveryAgent deliveryAgent){
+    public void assignDeliveryAgent(DeliveryAgent deliveryAgent) {
         this.deliveryAgent = deliveryAgent;
     }
 
     public String getId() {
         return id;
-  
+
     }
 
-    public OrderStatus getStatus(){
+    public OrderStatus getStatus() {
         return status;
     }
 }

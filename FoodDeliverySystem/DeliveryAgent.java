@@ -22,14 +22,14 @@ public class DeliveryAgent {
     }
 
     public String getId() {
-        return id; 
+        return id;
     }
 
-    public void setAvailability(boolean availability){
-        this.availability = availability ;
+    public void setAvailability(boolean availability) {
+        this.availability = availability;
     }
 
-    public boolean getAvailability(){
-        return availability ; 
+    public boolean getAvailability() {
+        return availability;
     }
 }
