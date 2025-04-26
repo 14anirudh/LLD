@@ -12,7 +12,7 @@ public class Order {
     private OrderStatus status;
     private DeliveryAgent deliveryAgent;
 
-    public Order(String id, Customer customer, Restaurant restaurant, List<OrderItem> items) {
+    public Order(String id, Customer customer, Restaurant restaurant) {
         this.id = id;
         this.customer = customer;
         this.restaurant = restaurant;
