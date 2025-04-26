@@ -1,0 +1,112 @@
+//https://www.planttext.com/
+
+@startuml FoodDeliverySystem
+
+skinparam classAttributeIconSize 0
+
+class FoodDeliveryService {
+    - {static} instance: FoodDeliveryService
+    - customers: Map<String, Customer>
+    - restaurants: Map<String, Restaurant>
+    - orders: Map<String, Order>
+    - deliveryAgents: Map<String, DeliveryAgent>
+    + {static} getInstance(): FoodDeliveryService
+    + registerCustomer(customer: Customer): void
+    + registerRestaurant(restaurant: Restaurant): void
+    + registerDeliveryAgent(agent: DeliveryAgent): void
+    + getAvailableRestaurants(): List<Restaurant>
+    + getRestaurantMenu(restaurantId: String): List<MenuItem>
+    + placeOrder(customerId: String, restaurantId: String, items: List<OrderItem>): Order
+    + updateOrderStatus(orderId: String, status: OrderStatus): void
+    + assignDeliveryAgent(order: Order): void
+    + cancelOrder(orderId: String): void
+}
+
+class Customer {
+    - id: String
+    - name: String
+    - email: String
+    - phone: String
+    + getId(): String
+}
+
+class Restaurant {
+    - id: String
+    - name: String
+    - address: String
+    - menu: List<MenuItem>
+    + getId(): String
+    + getMenu(): List<MenuItem>
+    + addMenuItem(item: MenuItem): void
+    + removeMenuItem(item: MenuItem): void
+}
+
+class MenuItem {
+    - id: String
+    - name: String
+    - description: String
+    - price: double
+    - availability: boolean
+    + getId(): String
+    + setAvailability(availability: boolean): void
+}
+
+class DeliveryAgent {
+    - id: String
+    - name: String
+    - phoneNumber: String
+    - availability: boolean
+    + getId(): String
+    + setAvailability(availability: boolean): void
+    + getAvailability(): boolean
+}
+
+class Order {
+    - id: String
+    - customer: Customer
+    - restaurant: Restaurant
+    - items: List<OrderItem>
+    - status: OrderStatus
+    - deliveryAgent: DeliveryAgent
+    + addItem(item: OrderItem): void
+    + removeItem(item: OrderItem): void
+    + setStatus(status: OrderStatus): void
+    + assignDeliveryAgent(agent: DeliveryAgent): void
+    + getId(): String
+    + getStatus(): OrderStatus
+}
+
+class OrderItem {
+    - menuItem: MenuItem
+    - quantity: int
+}
+
+enum OrderStatus {
+    PENDING
+    CONFIRMED
+    PREPARING
+    READY_FOR_PICKUP
+    OUT_FOR_DELIVERY
+    RETURNED
+    FAILED
+    DELIVERED
+    CANCELLED
+}
+
+FoodDeliveryService "1" *-- "*" Customer
+FoodDeliveryService "1" *-- "*" Restaurant
+FoodDeliveryService "1" *-- "*" Order
+FoodDeliveryService "1" *-- "*" DeliveryAgent
+
+Restaurant "1" *-- "*" MenuItem
+Order "*" -- "1" Customer
+Order "*" -- "1" Restaurant
+Order "1" *-- "*" OrderItem
+Order "*" -- "0..1" DeliveryAgent
+OrderItem "*" -- "1" MenuItem
+Order "1" -- "1" OrderStatus
+
+note "Singleton Pattern" as N1
+FoodDeliveryService .. N1
+
+@enduml
