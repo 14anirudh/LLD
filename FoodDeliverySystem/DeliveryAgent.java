@@ -4,7 +4,7 @@
 //- Rating for the delivery agent
 //- List of orders assigned to the agent
 //- List of reviews received by the agent
-//- Area
+//- Area for quick delivery can be added
 
 package FoodDeliverySystem;
 
