@@ -1,4 +1,4 @@
-package DesignPatterns.Factory.Abstract;
+package Creational.Factory.Abstract;
 
 public interface Car {
     public int getTopSpeed();

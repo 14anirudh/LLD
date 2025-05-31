@@ -1,4 +1,4 @@
-package DesignPatterns.Factory.Abstract;
+package Creational.Factory.Abstract;
 
 public class EconomicCar2 implements Car {
     

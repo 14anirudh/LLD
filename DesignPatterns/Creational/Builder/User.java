@@ -1,4 +1,4 @@
-package CreationalPatterns.Builder;
+package Creational.Builder;
 
 public class User {
     private String name;

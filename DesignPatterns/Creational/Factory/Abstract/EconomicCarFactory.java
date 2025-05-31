@@ -1,4 +1,4 @@
-package DesignPatterns.Factory.Abstract;
+package Creational.Factory.Abstract;
 
 public class EconomicCarFactory implements AbstarctFactory {
     public Car getInstance(int price){
